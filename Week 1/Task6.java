@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class PrintPairs {
+class PrintPairs {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
