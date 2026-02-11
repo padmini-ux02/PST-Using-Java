@@ -1,0 +1,69 @@
+Task 1: Problem Analysis & Algorithm Design
+
+
+Problem Statement:
+Objective: Improve logical thinking before coding
+Task:
+Analyze the problem “Student Result Management System” and do the following:
+1.	Identify inputs and outputs
+2.	Write the algorithm
+3.	Draw a flowchart
+4.	List possible test cases
+
+STEP 1: Understand the Problem
+The system should:
+Take student details
+Take marks
+Calculate total and average
+Assign grade
+Display result
+
+
+STEP 2: Identify Inputs and Output:
+
+1. Inputs:
+
+Student Name
+Roll Number
+Number of Subjects
+Marks of each subject
+
+2. Outputs:
+
+Total Marks
+Average Marks
+Grade
+Result (Pass/Fail)
+
+STEP 3: Algorithm:
+
+Start
+Input student name
+Input roll number
+Input number of subjects (n)
+Set total = 0
+Repeat the following steps n times:
+a. Input marks
+b. Add marks to total
+If average ≥ 75 then grade = "A"
+Else if average ≥ 60 then grade = "B"
+Else if average ≥ 50 then grade = "C"
+Else grade = "F"
+If grade ≠ "F" then result = "Pass"
+Else result = "Fail"
+Display student details, total, average, grade and result
+14. Stop
+
+STEP 5: Write Test Cases
+
+| Test Case | Marks      | Expected Grade | Result |
+| --------- | ---------- | -------------- | ------ |
+| TC1       | 80, 85, 90 | A              | Pass   |
+| TC2       | 65, 70, 60 | B              | Pass   |
+| TC3       | 50, 52, 55 | C              | Pass   |
+| TC4       | 30, 40, 45 | F              | Fail   |
+| TC5       | 75, 75, 75 | A              | Pass   |
+
+
+
+
