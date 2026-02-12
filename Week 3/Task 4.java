@@ -1,60 +1,56 @@
 import java.util.*;
-class Student {
-    private int id;
-    private String fname;
-    private double cgpa;
-    public Student(int id, String fname, double cgpa) {
-        this.id = id;
-        this.fname = fname;
-        this.cgpa = cgpa;
+import java.util.stream.*;
+
+class Person {
+    String name;
+    int age;
+
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
     }
-    public int getId() {
-        return id;
+
+    public String getName() {
+        return name;
     }
-  public String getFname() {
-        return fname;
+
+    public int getAge() {
+        return age;
     }
-    public double getCgpa() {
-        return cgpa;
-    }
-}
-// Comparator for sorting students
-class StudentComparator implements Comparator<Student> {
-    @Override
-    public int compare(Student s1, Student s2) {
-        // Sort by CGPA descending
-        if (s1.getCgpa() != s2.getCgpa()) {
-            return Double.compare(s2.getCgpa(), s1.getCgpa());
-        }
-        // If CGPA equal, sort by first name ascending
-        int nameComp = s1.getFname().compareTo(s2.getFname());
-        if (nameComp != 0) {
-            return nameComp;
-        }
-        // If first name also equal, sort by ID ascending
-        return s1.getId() - s2.getId();
+
+    // Static method for filtering
+    public static boolean isOlderThanLimit(Person p, int ageLimit) {
+        return p.age > ageLimit;
     }
 }
 
-public class Solution {
-    public static void main(String[] args){
-        Scanner in = new Scanner(System.in);
-        int testCases = Integer.parseInt(in.nextLine());
-        List<Student> studentList = new ArrayList<>();
-
-        while(testCases > 0){
-            int id = in.nextInt();
-            String fname = in.next();
-            double cgpa = in.nextDouble();
-            Student st = new Student(id, fname, cgpa);
-            studentList.add(st);
-            testCases--;
+public class MethodReferenceExample {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        List<Person> persons = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            String name = sc.next();
+            int age = sc.nextInt();
+            persons.add(new Person(name, age));
         }
-        // Sort using custom comparator
-        Collections.sort(studentList, new StudentComparator());
-        // Print sorted student names
-        for(Student st: studentList){
-            System.out.println(st.getFname());
-        }
+        int ageLimit = sc.nextInt();
+        // Sort names alphabetically using method reference
+        persons.stream()
+                .map(Person::getName)
+                .sorted(String::compareTo)
+                .forEach(name -> System.out.print(name + " "));
+        System.out.println();
+        // Filter persons older than ageLimit using static method reference
+        persons.stream()
+                .filter(p -> Person.isOlderThanLimit(p, ageLimit))
+                .map(Person::getName)
+                .forEach(name -> System.out.print(name + " "));
+        System.out.println();
+        // Convert all names to uppercase using instance method reference
+        persons.stream()
+                .map(Person::getName)
+                .map(String::toUpperCase)
+                .forEach(name -> System.out.print(name + " "));
     }
 }
